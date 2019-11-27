@@ -129,7 +129,9 @@ namespace mixpanel
                 else
                 {
                     _onceProperties = Mixpanel.ObjectPool.Get();
-                    JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(OncePropertiesName), _onceProperties);
+                    if (_onceProperties.ToString() != "{}") {
+                        JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(OncePropertiesName), _onceProperties);
+                    }
                 }
                 return _onceProperties;
             }
@@ -164,7 +166,9 @@ namespace mixpanel
                 else
                 {
                     _superProperties = Mixpanel.ObjectPool.Get(); 
-                    JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(SuperPropertiesName), _superProperties);
+                    if (_superProperties.ToString() != "{}") {
+                        JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(SuperPropertiesName), _superProperties);
+                    }
                 }
                 return _superProperties;
             }
@@ -199,7 +203,9 @@ namespace mixpanel
                 else 
                 {
                     _timedEvents = Mixpanel.ObjectPool.Get();
-                    JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(TimedEventsName), _timedEvents);
+                    if (_timedEvents.ToString() != "{}") {
+                        JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(TimedEventsName), _timedEvents);
+                    }
                 }
                 return _timedEvents;
             }
